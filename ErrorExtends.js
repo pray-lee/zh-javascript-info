@@ -24,7 +24,6 @@ function readUser(json) {
         user = JSON.parse(json);
     }catch(err) {
         if(err instanceof SyntaxError) {
-            console.log(err,'errr1')
             throw new ReadError('Syntax Error', err)
         }
     }
@@ -32,7 +31,6 @@ function readUser(json) {
         validateUser(user)
     }catch(err) {
         if(err instanceof ValidationError) {
-            console.log(err, 'errr2')
             throw new ReadError('validationError', err)
         }else{
             throw err
@@ -47,7 +45,6 @@ try {
     // readUser(JSON.stringify(obj))
     readUser('{ssss}') // err1
 }catch(err) {
-    console.log(err, 'err')
     if(err instanceof ReadError) {
        console.log('OriginalError: ' + err.cause)
     }
